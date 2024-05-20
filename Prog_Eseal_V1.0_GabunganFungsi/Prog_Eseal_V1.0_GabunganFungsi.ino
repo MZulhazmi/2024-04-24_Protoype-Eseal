@@ -307,9 +307,11 @@ void vCekKondisiESeal(){
 }
 void vCekInfoBukaGembok(){
   if (bBukaGembok) {
+    vStateL298N(1);
     vMotorForward(125,2000);
     vMotorBackward(125,2000);
     bStatusLock = 0;
+    vStateL298N(0);
   }
 }
 void vCekKondisiBuzzer(){
@@ -331,8 +333,12 @@ void setup() {
   Serial.begin(115200);
   Serial.println(" ");
   Serial.println("ALATON");
-  // put your setup code here, to run once:
-  // Bangun, inisialisasi ulang fungsi
+  print_wakeup_reason();
+  vPinSetup();
+  vSetupRFID();
+  vSetupMotorPWM();
+  vStateSIM800l(1);
+  vStateRFID(1);
 }
 void loop(){
   /*
@@ -343,4 +349,8 @@ void loop(){
     5. sebelum deepsleep ambil lokasi tapi dengan mengaktifkankan trigger gps ketika awal menyala agar gps sudah dalam kondisi siap
     6. dan jika lokasi berubah kirim data melalui internet
   */
-} */
+  vCekKondisiESeal();
+  vCekInfoBukaGembok();
+  vCekKondisiBuzzer();
+  vReadNUIDCard();
+} 
