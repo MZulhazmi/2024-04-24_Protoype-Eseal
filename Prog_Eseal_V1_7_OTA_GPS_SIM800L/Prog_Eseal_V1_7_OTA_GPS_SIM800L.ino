@@ -198,14 +198,13 @@ void vPrepareID(){
 //===================== Subs & Send CONFIG MQTT =====================//
 void vSubsConfig(){
   client.setServer(MQTT_SERVER, MQTT_PORT);
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
   char topic[50];
@@ -216,14 +215,13 @@ void vSubsConfig(){
 }
 void vSendConfig(int version, int calibration_battery_m, int calibration_battery_c, int log_interval){
   client.setServer(MQTT_SERVER, MQTT_PORT);
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
 
@@ -264,14 +262,13 @@ void vSendConfig(int version, int calibration_battery_m, int calibration_battery
 //Send untuk mengirim, sim00l coba mengirim menggunakan send ini tanpa harus tau balikanya
 void vSubsStatus(){
   client.setServer(MQTT_SERVER, MQTT_PORT);
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
 
@@ -284,14 +281,13 @@ void vSubsStatus(){
 }
 void vSendStatus(){
   client.setServer(MQTT_SERVER, MQTT_PORT);
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
 
@@ -331,14 +327,13 @@ void vSendStatus(){
 //===================== Subs & Send RFID MQTT =====================//
 void vSubsRFID(){
   client.setServer(MQTT_SERVER, MQTT_PORT);
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
 
@@ -351,14 +346,13 @@ void vSubsRFID(){
 }
 void vSendRFID(String rfid){
   client.setServer(MQTT_SERVER, MQTT_PORT);
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
 
@@ -385,14 +379,13 @@ void vSendRFID(String rfid){
 void vSubsUnlock(){
   client.setServer(MQTT_SERVER, MQTT_PORT);
   
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
 
@@ -407,14 +400,13 @@ void vSendUnlock(const char* method){
   Serial.println(method);
   client.setServer(MQTT_SERVER, MQTT_PORT);
   
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
 
@@ -455,14 +447,13 @@ void vSendUnlock(const char* method){
 void vSendLogs(){
   client.setServer(MQTT_SERVER, MQTT_PORT);
   
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
 
@@ -499,17 +490,16 @@ void vSendLogs(){
   Serial.println(topic);
   client.publish(topic, jsonStringBuffer); // Mengirimkan pesan menggunakan buffer karakter
 }
-//===================== Send LOG MQTT =====================//
+//===================== Send LOG SIM800 L MQTT =====================//
 void vSendLogsSim800l(){
   mqttGsm.setServer(MQTT_SERVER, MQTT_PORT);
-  if (!mqttGsm.connected()) {
-    Serial.print("Connecting to MQTT via GPRS...");
-    if (mqttGsm.connect(MergedMacAddress, MQTT_USER, MQTT_PASS)) {
+  while (!client.connected()) {
+    Serial.print("Connecting to MQTT...");
+    if (client.connect(MergedMacAddress , MQTT_USER, MQTT_PASS)) {
       Serial.println("connected");
     } else {
       Serial.print("failed with state ");
-      Serial.println(mqttGsm.state());
-      return;
+      Serial.print(client.state());
     }
   }
 
@@ -1393,6 +1383,7 @@ void MQTTSIM800L( void * pvParameters ){
   xLastWakeTime = xTaskGetTickCount ();
   for(;;){
     CounterLogSim++;
+    Serial.print("CounterLogSim = ");
     Serial.println(CounterLogSim);
     if (CounterLogSim >= 5){
       Serial.print("bSendLogSim800l = ");
