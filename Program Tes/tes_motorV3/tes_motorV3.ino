@@ -50,13 +50,14 @@ void loop() {
     StartOpen = 1;
   }
   if (StartOpen == 1){
+    delay(500);
     Serial.println("Motor berhenti setelah membuka ke kanan");
     digitalWrite(PIN_IN1, HIGH);
     digitalWrite(PIN_IN2, LOW);
     delay(300);
     digitalWrite(PIN_IN1, LOW);
     digitalWrite(PIN_IN2, LOW);
-    delay(5000);
+    delay(3000);
     digitalWrite(PIN_IN1, LOW);
     digitalWrite(PIN_IN2, HIGH);
     delay(100);
